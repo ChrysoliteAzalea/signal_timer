@@ -31,11 +31,12 @@ fn main() -> Result<(),std::io::Error> {
       event.sigev_signo = SIGRTMIN()+3;
       event.sigev_notify = SIGEV_THREAD_ID;
       event.sigev_notify_thread_id = unsafe { gettid() };
-	   let mut t: timer_t = null_mut();
-	   let n: timespec = timespec {tv_sec: 3, tv_nsec: 0};
-	   let s: itimerspec = itimerspec {it_interval: n, it_value: n};
-	   let handler = SigHandler::Handler(dummy);
-	   let act = SigAction::new(handler, SaFlags::empty(), SigSet::empty());
+      let mut t: timer_t = null_mut();
+      let n: timespec = timespec {tv_sec: 3, tv_nsec: 0};
+      let zero: timespec = timespec { tv_sec: 0, tv_nsec: 0};
+      let s: itimerspec = itimerspec {it_interval: zero, it_value: n};
+      let handler = SigHandler::Handler(dummy);
+      let act = SigAction::new(handler, SaFlags::empty(), SigSet::empty());
        unsafe {
        	timer_create(CLOCK_MONOTONIC, from_mut(&mut event), &mut t);
        	timer_settime(t, 0, &s, null_mut());
