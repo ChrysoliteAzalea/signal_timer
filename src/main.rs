@@ -20,7 +20,7 @@ fn main() -> Result<(),std::io::Error> {
       let flock_target = match cmdline_arg.next() {
          Some(arg) => arg,
          None => {
-            println!("Please, supply an argument!");
+            println!("Please, supply a file path to attempt flock() for!");
             return Err(std::io::Error::new(std::io::ErrorKind::InvalidInput, "No input"));
          }
       };
