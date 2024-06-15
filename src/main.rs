@@ -2,7 +2,6 @@ use libc::*;
 use std::ptr::null_mut;
 use nix::sys::signal::*;
 use std::mem;
-use std::mem::transmute;
 use std::ptr;
 use std::ptr::from_mut;
 use std::env;
@@ -40,7 +39,7 @@ fn main() -> Result<(),std::io::Error> {
        unsafe {
        	timer_create(CLOCK_MONOTONIC, from_mut(&mut event), &mut t);
        	timer_settime(t, 0, &s, null_mut());
-       	nix::sys::signal::sigaction(transmute(SIGRTMIN()+3), &act)?;
+       	nix::sys::signal::sigaction_noretrieve(SIGRTMIN()+3, &act)?;
        }
       let _lock_guard = match Flock::lock(f_handle, FlockArg::LockExclusive) {
          Ok(_) => {
