@@ -39,7 +39,7 @@ fn main() -> Result<(),std::io::Error> {
        unsafe {
        	timer_create(CLOCK_MONOTONIC, from_mut(&mut event), &mut t);
        	timer_settime(t, 0, &s, null_mut());
-       	nix::sys::signal::sigaction_noretrieve(SIGRTMIN()+3, &act)?;
+       	let _ = nix::sys::signal::rt_sigaction(SignalValue::Realtime(3), &act)?;
        }
       let _lock_guard = match Flock::lock(f_handle, FlockArg::LockExclusive) {
          Ok(_) => {

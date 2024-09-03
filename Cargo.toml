@@ -7,5 +7,5 @@ edition = "2021"
 
 [dependencies]
 libc = "0.2.155"
-nix = { git = "https://github.com/ChrysoliteAzalea/nix", rev = "01a10675fd94084a0e498bf8c8c68586b1a84d92", features = ["signal", "fs"] }
+nix = { git = "https://github.com/ChrysoliteAzalea/nix", rev = "faef524c5ff127f121e536e5d8856ec984ca3821", features = ["signal", "fs"] }
 #nix = { git = "file:///home/madoka/github_copies/nix", rev = "01a10675fd94084a0e498bf8c8c68586b1a84d92", features = ["signal", "fs"] }

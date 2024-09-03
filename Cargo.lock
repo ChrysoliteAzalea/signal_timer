@@ -29,7 +29,7 @@ checksum = "97b3888a4aecf77e811145cadf6eef5901f4782c53886191b2f693f24761847c"
 [[package]]
 name = "nix"
 version = "0.29.0"
-source = "git+https://github.com/ChrysoliteAzalea/nix?rev=01a10675fd94084a0e498bf8c8c68586b1a84d92#01a10675fd94084a0e498bf8c8c68586b1a84d92"
+source = "git+https://github.com/ChrysoliteAzalea/nix?rev=faef524c5ff127f121e536e5d8856ec984ca3821#faef524c5ff127f121e536e5d8856ec984ca3821"
 dependencies = [
  "bitflags",
  "cfg-if",
